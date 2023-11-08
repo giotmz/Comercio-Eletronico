@@ -4,15 +4,15 @@ Primeiramente dar um composer update, caso der erro, ensira um arquivo vendor
 Crie o arquivo .env com os dados: <br>
 <br>APP_NAME=Lumen 
 <br>APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://localhost
-APP_TIMEZONE=UTC
-LOG_CHANNEL=stack
-LOG_SLACK_WEBHOOK_URL=
-DB_CONNECTION=sqlite
-CACHE_DRIVER=file
-QUEUE_CONNECTION=sync
+<br>APP_KEY=
+<br>APP_DEBUG=true
+<br>APP_URL=http://localhost
+<br>APP_TIMEZONE=UTC
+<br>LOG_CHANNEL=stack
+<br>LOG_SLACK_WEBHOOK_URL=
+<br>DB_CONNECTION=sqlite
+<br>CACHE_DRIVER=file
+<br>QUEUE_CONNECTION=sync
 <br>
 Depois, rode o comando: `php artisan migrate`
 
