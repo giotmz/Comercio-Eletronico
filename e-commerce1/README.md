@@ -2,8 +2,8 @@
 Primeiramente dar um composer update, caso der erro, ensira um arquivo vendor
 
 Crie o arquivo .env com os dados: <br>
-APP_NAME=Lumen
-APP_ENV=local
+<br>APP_NAME=Lumen 
+<br>APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
 APP_URL=http://localhost
