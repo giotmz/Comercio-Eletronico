@@ -14,6 +14,7 @@ Crie o arquivo .env com os dados: <br>
 <br>CACHE_DRIVER=file
 <br>QUEUE_CONNECTION=sync
 <br>
+<br>
 Depois, rode o comando: `php artisan migrate`
 
 Obs.: Certifique-se de ter um arquivo `database.sqlite` na pasta `./database`
