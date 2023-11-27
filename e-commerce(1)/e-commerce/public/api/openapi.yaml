@@ -1,0 +1,127 @@
+openapi: '3.1.0'
+info:
+  title: E-Commerce
+  description: Um site de comércio eletrônico onde os clientes podem navegar por produtos, adicioná-los ao carrinho e efetuar compras. O servidor gerenciará o catálogo de produtos, carrinhos de compras, processamento de pedidos e informações do cliente.
+  version: '1.1'
+servers:
+  - url: http://{host}:{port}
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '8000'
+
+paths:
+  /products:
+    get:
+      operationId: indexProducts
+      summary: Lista todos os produtos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 0
+                items:
+                  $ref: '#/components/schemas/product'
+    post:
+      operationId: storeProduct
+      summary: Salva um produto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/product/properties/name'
+                description:
+                  $ref: '#/components/schemas/product/properties/description'
+                price:
+                  $ref: '#/components/schemas/product/properties/price'
+                stock:
+                  $ref: '#/components/schemas/product/properties/stock'
+      responses:
+        201:
+          description: Produto cadastrado com sucesso
+
+  /products/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: "#/components/schemas/product/properties/id"
+  
+    get:
+      operationId: showProduct
+      summary: Recupera um produto específico
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product'
+        404:
+          description: Produto não encontrado
+
+    put:
+      summary: Atualiza um produto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/product/properties/name'
+                description:
+                  $ref: '#/components/schemas/product/properties/description'
+                price:
+                  $ref: '#/components/schemas/product/properties/price'
+                stock:
+                  $ref: '#/components/schemas/product/properties/stock'
+      responses:
+        200:
+          description: OK
+        404:
+          description: Produto não encontrado
+
+    delete:
+      summary: Deleta um produto
+      responses:
+        200:
+          description: OK
+        404:
+          description: Produto não encontrado
+
+components:
+  schemas:
+    product:
+      type: object
+      description: Um produto
+      properties:
+        id:
+          type: integer
+          description: Um id gerado automaticamente pelo sistema
+          example: 7
+        name:
+          type: string
+          description: O nome do produto
+          example: Notebook Positivo
+        description:
+          type: string
+          description: A descrição do produto
+          example: Notebook ótimo para trabalho e atividades do dia a dia, da escola e do trabalho
+        price:
+          type: number
+          description: O preço do produto
+          example: 1500
+        stock:
+          type: integer
+          description: O estoque do produto
+          example: 11

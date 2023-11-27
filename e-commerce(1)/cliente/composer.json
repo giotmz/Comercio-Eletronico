@@ -1,0 +1,12 @@
+{
+    "name": "july/cliente",
+    "description": "cliente para e-commerce",
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "July\\Cliente\\": "src/"
+        }
+    }
+}
